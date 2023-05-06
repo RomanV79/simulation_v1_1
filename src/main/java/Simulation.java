@@ -4,13 +4,17 @@ import world.World;
 
 public class Simulation {
 
+    public static boolean isGameStopped = false;
+
     public static void main(String[] args) {
         World world = new World();
-
         Simulation simulation = new Simulation();
+
         simulation.startSimulation(world);
 
-        simulation.nextTurn(world);
+        while (!isGameStopped) {
+            simulation.nextTurn(world);
+        }
 
     }
 

@@ -20,7 +20,8 @@ public class WorldRender {
 
     public static void render(World world) {
 
-        ClearScreen.clearConsole();
+        ClearScreen.clrscr();
+
         for (int i = 0; i < worldRow; i++) {
             String line = "";
             for (int j = 0; j < worldColumn; j++) {

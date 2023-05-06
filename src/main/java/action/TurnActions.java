@@ -3,6 +3,7 @@ package action;
 import entity.Creature;
 import entity.Entity;
 import entity.Herbivore;
+import entity.Predator;
 import world.Coordinates;
 import world.World;
 
@@ -26,6 +27,10 @@ public class TurnActions {
             if (randomCreature instanceof Herbivore) {
                 Herbivore herbivore = (Herbivore) randomCreature;
                 herbivore.makeMove(world);
+            }
+            if (randomCreature instanceof Predator) {
+                Predator predator = (Predator) randomCreature;
+                predator.makeMove(world);
             }
         }
     }
