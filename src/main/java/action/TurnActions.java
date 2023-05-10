@@ -19,12 +19,13 @@ public class TurnActions {
         List<Creature> creatureList = getCreatureList(world);
         List<Grass> grassList = getGrassList(world);
         List<Creature> herbivoreList = getHerbivoreList(world);
-        if (grassList.isEmpty() || herbivoreList.isEmpty()) {
+        if (grassList.isEmpty() || herbivoreList.isEmpty() || creatureList.isEmpty()) {
             isNextStepExist = false;
             System.out.println("Закончились объекты ради которых можно двигаться.");
             System.out.println("Травоядные съели всю траву или хищники съели всех травоядных");
         } else {
-            Creature randomCreature = creatureList.get(random.nextInt(creatureList.size() - 1));
+            int n = random.nextInt(creatureList.size());
+            Creature randomCreature = creatureList.get(n);
             if (randomCreature instanceof Herbivore) {
                 Herbivore herbivore = (Herbivore) randomCreature;
                 herbivore.makeMove(world);
@@ -60,7 +61,7 @@ public class TurnActions {
         world.getEntities();
         List<Creature> herbivoreList = new ArrayList<>();
         for (Map.Entry<Coordinates, Entity> item: world.getEntities().entrySet()) {
-            if (item.getValue() instanceof Predator) {
+            if (item.getValue() instanceof Herbivore) {
                 herbivoreList.add((Creature) item.getValue());
             }
         }

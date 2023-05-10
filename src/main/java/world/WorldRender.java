@@ -14,7 +14,7 @@ public class WorldRender {
     public static final String ANSI_GRASS = "\ud83c\udf40";
     public static final String ANSI_ROCK = "\ud83e\udea8";
     public static final String ANSI_TREE = "\ud83c\udf34";
-    public static final String ANSI_EMPTY = "\u25fb\ufe0f";
+    public static final String ANSI_EMPTY = "\u25ab\ufe0f";
     public static final String ANSI_BACKGROUND = "\033[48;2;250;250;250m"; // grey
 
 
@@ -40,6 +40,8 @@ public class WorldRender {
             System.out.println(line + ANSI_RESET_COLOR);
         }
         System.out.println();
+        System.out.println("Pause - enter 1");
+        System.out.println("Continue - enter 0");
     }
 
     private static String setEmptySprite(){
