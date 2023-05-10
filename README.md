@@ -22,6 +22,7 @@
   Наберите пооочередно в консоли:
   
   REM change CHCP to UTF-8
+  
   CHCP 65001
   
   ![image](https://github.com/RomanV79/simulation_v1_1/assets/121058298/bfff3aa5-fd2f-4c3a-980e-066310a15a96)
