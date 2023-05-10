@@ -4,32 +4,25 @@ import world.World;
 
 public class Simulation {
 
-    public static boolean isGameStopped = false;
-
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         World world = new World();
         Simulation simulation = new Simulation();
 
         simulation.startSimulation(world);
 
-        while (!isGameStopped) {
-            simulation.nextTurn(world);
-        }
-
     }
 
-    private void nextTurn(World world) {
-        TurnActions turnActions = new TurnActions();
+    private synchronized void nextTurn(TurnActions turnActions, World world) {
         turnActions.turnAction(world);
     }
-
-    public void startSimulation(World world){
+    public void startSimulation(World world) throws InterruptedException {
         InitActions initActions = new InitActions();
         initActions.initAction(world);
 
         TurnActions turnActions = new TurnActions();
         while (turnActions.isNextStepExist()) {
-            nextTurn(world);
+
+            nextTurn(turnActions, world);
             try {
                 Thread.sleep(1000);
             } catch (InterruptedException e) {
@@ -37,7 +30,6 @@ public class Simulation {
             }
         }
     }
-
     private void pauseSimulation(){
 
     }

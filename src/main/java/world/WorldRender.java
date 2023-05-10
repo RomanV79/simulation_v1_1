@@ -19,8 +19,11 @@ public class WorldRender {
 
 
     public static void render(World world) {
-
+        // for windows
         ClearScreen.clrscr();
+        // for linux
+/*        System.out.print("\033[H\033[2J");
+        System.out.flush();*/
 
         for (int i = 0; i < worldRow; i++) {
             String line = "";

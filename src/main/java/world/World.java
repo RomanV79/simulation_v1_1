@@ -6,8 +6,8 @@ import java.util.HashMap;
 import java.util.Random;
 
 public class World {
-    public static final Integer worldRow = 15;
-    public static final Integer worldColumn = 30;
+    public static final Integer worldRow = 8;
+    public static final Integer worldColumn = 8;
     public static final Integer qntOfEntityStartPercent = 10;
 
     private HashMap<Coordinates, Entity> entities = new HashMap<>();
@@ -29,7 +29,6 @@ public class World {
         return ((entities.get(coordinates) instanceof Tree)
                     || (entities.get(coordinates) instanceof Rock));
     }
-
 
     public Entity getEntity(Coordinates coordinates) {
         return entities.get(coordinates);
