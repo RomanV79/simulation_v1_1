@@ -35,7 +35,7 @@ public class World {
     public <T> List<T> getEntitiesOfType(Class<T> type){
         List<T> list = new ArrayList<>();
         for (Map.Entry<Coordinates, Entity> item: getEntities().entrySet()) {
-            if (type.isInstance(item.getClass())) {
+            if (type.isInstance(item.getValue())) {
                 list.add((T) item.getValue());
             }
         }
