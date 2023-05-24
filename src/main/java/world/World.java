@@ -48,9 +48,9 @@ public class World {
 
     public boolean isGrass(Entity entity){
 
-        return (entity != null) && entity.getClass().getSimpleName().equals("Grass");
+        return entity instanceof Grass;
     }
     public boolean isHerbivore(Entity entity){
-        return (entity != null) && entity.getClass().getSimpleName().equals("Herbivore");
+        return entity instanceof Herbivore;
     }
 }

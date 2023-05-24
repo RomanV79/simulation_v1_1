@@ -1,6 +1,8 @@
 package utils;
 
 import entity.Creature;
+import entity.Herbivore;
+import entity.Predator;
 import world.Coordinates;
 import world.World;
 
@@ -8,14 +10,11 @@ import java.util.*;
 
 public class PathBuilder {
 
-    private Queue<Coordinates> cellQueue;
-    private Set<Coordinates> visitedCells;
-    private HashMap<Coordinates, Coordinates> parents; // ключ - текущая ячейка, значение - ее родитель
-
     public List<Coordinates> getPath(Coordinates coordinates, Creature creature, World world) {
-        cellQueue = new LinkedList<>();
-        visitedCells = new HashSet<>();
-        parents = new HashMap<>();
+        Queue<Coordinates> cellQueue = new LinkedList<>();
+        Set<Coordinates> visitedCells = new HashSet<>();
+        // ключ - текущая ячейка, значение - ее родитель
+        HashMap<Coordinates, Coordinates> parents = new HashMap<>();
         cellQueue.add(coordinates);
         Coordinates target = null;
 
@@ -30,12 +29,12 @@ public class PathBuilder {
                     cellQueue.add(item);
                     parents.put(item, currentCell);
                 } else {
-                    if (creature.getClass().getSimpleName().equals("Predator") && world.isHerbivore(world.getEntity(item))) {
+                    if ((creature instanceof Predator) && world.isHerbivore(world.getEntity(item))) {
                         target = item;
                         parents.put(item, currentCell);
                         break stopSearch;
                     }
-                    if (creature.getClass().getSimpleName().equals("Herbivore") && world.isGrass(world.getEntity(item))) {
+                    if ((creature instanceof Herbivore) && world.isGrass(world.getEntity(item))) {
                         target = item;
                         parents.put(item, currentCell);
                         break stopSearch;
