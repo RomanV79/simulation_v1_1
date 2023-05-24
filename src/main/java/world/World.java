@@ -2,8 +2,7 @@ package world;
 
 import entity.*;
 
-import java.util.HashMap;
-import java.util.Random;
+import java.util.*;
 
 public class World {
     public static final Integer worldRow = 15;
@@ -17,6 +16,10 @@ public class World {
         entities.put(coordinates, entity);
     }
 
+    public void removeEntity(Coordinates coordinates) {
+        entities.remove(coordinates);
+    }
+
     public HashMap<Coordinates, Entity> getEntities() {
         return entities;
     }
@@ -27,6 +30,16 @@ public class World {
 
     public Entity getEntity(Coordinates coordinates) {
         return entities.get(coordinates);
+    }
+
+    public <T> List<T> getEntitiesOfType(Class<T> type){
+        List<T> list = new ArrayList<>();
+        for (Map.Entry<Coordinates, Entity> item: getEntities().entrySet()) {
+            if (type.isInstance(item.getClass())) {
+                list.add((T) item.getValue());
+            }
+        }
+        return list;
     }
 
     public void getStartEntitySet(){
@@ -47,7 +60,6 @@ public class World {
     }
 
     public boolean isGrass(Entity entity){
-
         return entity instanceof Grass;
     }
     public boolean isHerbivore(Entity entity){
