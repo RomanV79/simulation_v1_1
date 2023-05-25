@@ -7,6 +7,9 @@ import world.World;
 
 public class Simulation {
     private volatile boolean isPause = false;
+    InitActions initActions = new InitActions();
+    TurnActions turnActions = new TurnActions();
+
 
     public void setPause(boolean pause) {
         isPause = pause;
@@ -24,13 +27,12 @@ public class Simulation {
     }
 
     private synchronized void nextTurn(TurnActions turnActions, World world) {
-        turnActions.turnAction(world);
+        turnActions.perfom(world);
     }
     public void startSimulation(World world) throws InterruptedException {
-        InitActions initActions = new InitActions();
-        initActions.initAction(world);
 
-        TurnActions turnActions = new TurnActions();
+        initActions.perfom(world);
+
         while (turnActions.isNextStepExist()) {
             while (isPause) {
                 Thread.sleep(500);
