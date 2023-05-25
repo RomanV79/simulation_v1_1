@@ -6,6 +6,7 @@ import utils.KeyHandler;
 import world.World;
 
 public class Simulation {
+
     private volatile boolean isPause = false;
     InitActions initActions = new InitActions();
     TurnActions turnActions = new TurnActions();
@@ -31,7 +32,7 @@ public class Simulation {
     }
     public void startSimulation(World world) throws InterruptedException {
 
-        initActions.perfom(world);
+        initActions.init(world);
 
         while (turnActions.isNextStepExist()) {
             while (isPause) {

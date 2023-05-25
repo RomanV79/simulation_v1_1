@@ -1,6 +1,9 @@
 package entity;
 
+import world.Coordinates;
+
 public class Grass extends Entity {
-    public Grass() {
+    public Grass(Coordinates coordinates) {
+        this.coordinates = coordinates;
     }
 }

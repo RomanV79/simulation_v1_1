@@ -1,9 +1,14 @@
 package entity;
 
+import world.Coordinates;
+import world.World;
+
 public class Predator extends Creature {
-    private Integer power;
-    public Predator(Integer speed, Integer HP, Integer power) {
-        super(speed, HP);
-        this.power = power;
+    protected Integer power;
+    public Predator(Coordinates coordinates) {
+        this.speed = World.random.nextInt(10) + 10;
+        this.HP = World.random.nextInt(5) + 5;
+        this.power = World.random.nextInt(5) + 5;
+        this.coordinates = coordinates;
     }
 }

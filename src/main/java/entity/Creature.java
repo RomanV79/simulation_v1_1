@@ -9,15 +9,15 @@ import java.util.List;
 
 public abstract class Creature extends Entity {
 
-    private Integer speed;
-    private Integer HP;
+    protected Integer speed;
+    protected Integer HP;
 
     PathBuilder pathBuilder = new PathBuilder();
 
-    public Creature(Integer speed, Integer HP) {
-        this.speed = speed;
-        this.HP = HP;
-    }
+//    public Creature(Integer speed, Integer HP) {
+//        this.speed = speed;
+//        this.HP = HP;
+//    }
 
     public Integer getSpeed() {
         return speed;

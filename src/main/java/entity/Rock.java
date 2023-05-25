@@ -1,6 +1,9 @@
 package entity;
 
+import world.Coordinates;
+
 public class Rock extends Entity {
-    public Rock() {
+    public Rock(Coordinates coordinates) {
+        this.coordinates = coordinates;
     }
 }

@@ -1,11 +1,14 @@
-package entity;
+// deactivate for use abstract class by SpawnAction
 
-public enum EntityType {
 
-    HERBIVORE,
-    PREDATOR,
-    GRASS,
-    ROCK,
-    TREE
-
-}
+//package entity;
+//
+//public enum EntityType {
+//
+//    HERBIVORE,
+//    PREDATOR,
+//    GRASS,
+//    ROCK,
+//    TREE
+//
+//}

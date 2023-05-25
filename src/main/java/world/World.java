@@ -5,9 +5,9 @@ import entity.*;
 import java.util.*;
 
 public class World {
+    public static Random random = new Random();
     public static final Integer worldRow = 15;
     public static final Integer worldColumn = 30;
-    public static final Integer qntOfEntityStartPercent = 10;
 
     private HashMap<Coordinates, Entity> entities = new HashMap<>();
 
@@ -42,21 +42,26 @@ public class World {
         return list;
     }
 
-    public void getStartEntitySet(){
+/*    public void getStartEntitySet(){
         Random random = new Random();
         int qntOfTypeEntity = EntityType.values().length;
         int eachOfEntityType = (worldRow * worldColumn * qntOfEntityStartPercent / 100) / qntOfTypeEntity;
         for (EntityType item: EntityType.values()) {
             for (int i = 0; i < eachOfEntityType; i++) {
-                Coordinates coordinates;
-                do {
-                    coordinates = new Coordinates(random.nextInt(worldRow), random.nextInt(worldColumn));
-                } while (!isCellEmpty(coordinates));
-
+                Coordinates coordinates = getEmptyRandomCoordinates();
                 Entity entity = EntityFactory.createEntity(item);
                 setEntity(coordinates, entity);
             }
         }
+    }*/
+
+    public Coordinates getEmptyRandomCoordinates() {
+        Random random = new Random();
+        Coordinates coordinates;
+        do {
+            coordinates = new Coordinates(random.nextInt(worldRow), random.nextInt(worldColumn));
+        } while (!isCellEmpty(coordinates));
+        return coordinates;
     }
 
     public boolean isGrass(Entity entity){
@@ -64,5 +69,9 @@ public class World {
     }
     public boolean isHerbivore(Entity entity){
         return entity instanceof Herbivore;
+    }
+
+    public double getSize() {
+        return worldRow * worldColumn;
     }
 }
